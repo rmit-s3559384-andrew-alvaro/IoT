@@ -1,2 +1,8 @@
-# demo-iot
-demo for pIoT 2019 Semester 1
+# Overview
+Instructions for downloading this folder is as such
+'''
+$ git clone git@github.com:ongkbk/demo-iot.git
+'''
+
+Further instructions to be uploaded.
+

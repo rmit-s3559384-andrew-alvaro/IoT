@@ -4,7 +4,7 @@ from virtual_sense_hat import VirtualSenseHat
 def getCurrentTime():
     sense = VirtualSenseHat.getSenseHat()
     getTime = datetime.datetime.now().strftime('%I:%M %p')
-    sense.show_message('Time: %s', (getTime))
+    sense.show_message('Time: ', getTime)
     return getTime
     print(getTime)
 

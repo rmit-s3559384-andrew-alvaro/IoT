@@ -2,6 +2,7 @@ import datetime
 from virtual_sense_hat import VirtualSenseHat
  
 def getCurrentTime():
+    sense = VirtualSenseHat.getSenseHat()
     getTime = datetime.datetime.now().strftime('%I:%M %p')
     sense.show_message('Time: {0:0.1f}'.format(getTime))
     return getTime

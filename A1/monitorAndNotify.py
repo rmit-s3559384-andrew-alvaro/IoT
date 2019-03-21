@@ -1,15 +1,12 @@
 import datetime
-from sense_hat import SenseHat
+from virtual_sense_hat import VirtualSenseHat
 
-def getCurrentTime(time):
-    time = datetime.datetime.fromtimestamp(
-    int(time)
-    ).strftime('%I:%M %p')
+def getCurrentTime():
+    getTime = datetime.datetime.now().strftime('%I:%M %p')
+    return getTime
+    print(getTime)
 
-    return time
-    print(time)
-
-
+getCurrentTime()
 # OR
 # sense = VirtualSenseHat.getSenseHat(False)
 def getWeatherTemp(): 
@@ -17,8 +14,12 @@ def getWeatherTemp():
    temperature = sense.get_temperature()
    sense.show_message('Temperature: {0:0.1f} *C'.format(temperature))
    return temperature
+
+getWeatherTemp()
 def getWeatherHumid():
     sense = VirtualSenseHat.getSenseHat()
     humidity = sense.get_humidity()
     sense.show_message('Humidity: {0:0.0f}%'.format(humidity))
     return humidity
+
+getWeatherHumid()

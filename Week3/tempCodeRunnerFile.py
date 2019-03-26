@@ -1,1 +1,1 @@
-json.dump(data, file, indent
+from virtual_sense_hat import VirtualSenseHat

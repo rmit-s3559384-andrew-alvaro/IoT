@@ -1,5 +1,7 @@
-def createReport(report):
-    try:
-        fp = open(report, 'r')
-    finally:
-        f.close()
+import csv
+
+class Report:
+    
+    def report():
+        with open("sensehat.db", "w", newline="") as csvfile:
+        

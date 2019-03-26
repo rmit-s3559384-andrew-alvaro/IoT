@@ -1,23 +1,22 @@
-import datetime
 from virtual_sense_hat import VirtualSenseHat
- 
-def getCurrentTime():
-    sense = VirtualSenseHat.getSenseHat()
-    timestamp = datetime.datetime.now().strftime('%I:%M %p')
-    sense.show_message('Time: %s' % timestamp)
-    print("Time:", timestamp)
-getCurrentTime()
+import datetime
+from logData import Logger
+import sqlite3
 
-def getWeatherTemp(): 
-   sense = VirtualSenseHat.getSenseHat()
-   temperature = sense.get_temperature()
-   sense.show_message('Temperature: {0:0.1f} *C'.format(temperature))
-   print("Temperature:", temperature)
-getWeatherTemp()
+class Info:
+   
+   def getInfo(self):
+      sense = VirtualSenseHat.getSenseHat()
+      timestamp = datetime.datetime.now().strftime('%I:%M %p')
+      temperature = sense.get_temperature()
+      humidity = sense.get_humidity()
+        
+      return timestamp, temperature, humidity
 
-def getWeatherHumid():
-    sense = VirtualSenseHat.getSenseHat()
-    humidity = sense.get_humidity()
-    sense.show_message('Humidity: {0:0.0f}%'.format(humidity))
-    print("Humidity:", humidity)
-getWeatherHumid()
+info = Info()
+timestamp, temperature, humidity = info.getInfo()
+
+logData = Logger()
+logData.dataLogger(timestamp, temperature, humidity)
+
+logData.displayData

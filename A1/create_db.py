@@ -1,8 +1,13 @@
-import sqlite3 as lite
-import sys
+import sqlite3
 
-con = lite.connect("report.db")
+class CreateDB:
+    
+    def createData():
+        connection = sqlite3.connect("sensehat.db")
 
-with con:
-    cur = con.cursor()
-    cur.execute()
+        with connection:
+             connection.execute("DROP TABLE IF EXISTS sensehat_data")
+             connection.execute("CREATE TABLE sensehat_data(timestamp STRING, temperature NUMERIC, humidity NUMERIC)")
+        connection.close()
+
+    createData()

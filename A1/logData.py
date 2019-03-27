@@ -23,5 +23,6 @@ class Logger:
             print("-----------------")
             print("Time  Temperature  Humidity")
             for row in cursor:
-                print(row["timestamp"], row["temperature"], row["humidity"], sep="  ")
+                print(row["timestamp"], row["temperature"], row["humidity"], sep="   ")
+    
     displayData()

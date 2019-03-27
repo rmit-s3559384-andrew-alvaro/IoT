@@ -10,7 +10,6 @@ class Info:
       timestamp = datetime.datetime.now().strftime('%I:%M %p')
       temperature = sense.get_temperature()
       humidity = sense.get_humidity()
-        
       return timestamp, temperature, humidity
 
 info = Info()

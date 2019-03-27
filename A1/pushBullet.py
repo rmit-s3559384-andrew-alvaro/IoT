@@ -24,10 +24,10 @@ class pushNotification:
         print("Notification sent.")
 
     # Main function.
-    def main():
+def main():
         ip_address = os.popen("hostname -I").read()
         send_notification_via_pushbullet(ip_address, "From Raspberry Pi")
 
     # Execute.
-    if __name__ == "__main__":
+if __name__ == "__main__":
         main()

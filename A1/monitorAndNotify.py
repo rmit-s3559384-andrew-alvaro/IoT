@@ -11,11 +11,18 @@ class Info:
       temperature = sense.get_temperature()
       humidity = sense.get_humidity()
       return timestamp, temperature, humidity
+   
 
 info = Info()
-timestamp, temperature, humidity = info.getInfo()
 
-logData = Logger()
-logData.dataLogger(timestamp, temperature, humidity)
+def main():
+      
+   timestamp, temperature, humidity = info.getInfo()
 
-logData.displayData
+   logData = Logger()
+   logData.dataLogger(timestamp, temperature, humidity)
+
+   logData.displayData
+   
+if __name__ == "__main__":
+        main()

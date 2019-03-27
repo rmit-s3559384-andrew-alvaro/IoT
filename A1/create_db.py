@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-import sqlite3 as lite
+import sqlite3
 import sys
+
 
 class CreateDB:
 
@@ -10,7 +11,7 @@ class CreateDB:
 
 		with connection:
 			connection.execute("DROP TABLE IF EXISTS sensehat_data")
-			connection.execute("CREATE TABLE sensehat_data(timestamp DATETIME, temperature NUMERIC. humidity NUMERIC)")
+			connection.execute("CREATE TABLE sensehat_data(timestamp DATETIME, temperature NUMERIC, humidity NUMERIC)")
 		connection.close()
 
-     createData()
+	createData()	

@@ -13,4 +13,4 @@ class CreateDB:
 			connection.execute("CREATE TABLE sensehat_data(timestamp DATETIME, temperature NUMERIC. humidity NUMERIC)")
 		connection.close()
 
-    createData()
+     createData()

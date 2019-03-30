@@ -3,6 +3,6 @@ import csv
 
 class Report:
     
-    def report():
+    def report(self):
         with open("sensehat.db", "w", newline="") as csvfile:
             writer = csv.writer(csvfile)

@@ -6,7 +6,7 @@ import os
 class pushNotification:
 
 
-    def send_notification_via_pushbullet(title, body):
+    def send_notification_via_pushbullet(self, title, body):
         ACCESS_TOKEN = "o.T3YzoJfL2PpiSk54KMTsTm9Y0VtSjjdS"
 
         """ Sending notification via pushbullet.
@@ -26,10 +26,10 @@ class pushNotification:
         print("Notification sent.")
 
     # Main function.
-push = pushNotification
+push = pushNotification()
 
 def main():
-    
+
     ip_address = os.popen("hostname -I").read()
     push.send_notification_via_pushbullet(ip_address, "From Raspberry Pi")
 

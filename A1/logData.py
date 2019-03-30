@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sqlite3
 
 class Logger:
@@ -24,5 +25,4 @@ class Logger:
             print("Time  Temperature  Humidity")
             for row in cursor:
                 print(row["timestamp"], row["temperature"], row["humidity"], sep="   ")
-    
     displayData()

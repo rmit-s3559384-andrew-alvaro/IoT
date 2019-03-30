@@ -5,11 +5,20 @@ import sys
 
 
 class CreateDB:
+    
+    def createData(self):
+        connection = sqlite3.connect("sensehat.db")
 
-	def createData():
-		connection = sqlite3.connect("sensehat.db")
+        with connection:
+            connection.execute("CREATE TABLE sensehat_data(timestamp DATETIME, temperature NUMERIC, humidity NUMERIC)")
+        connection.close()
 
-		with connection:
-			connection.execute("CREATE TABLE sensehat_data(timestamp DATETIME, temperature NUMERIC, humidity NUMERIC)")
-		connection.close()
-    createData()
+create = CreateDB()
+
+def main():
+    create.createData()
+
+if __name__ == "__main__":
+    main()
+
+    

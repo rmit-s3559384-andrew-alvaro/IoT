@@ -23,7 +23,7 @@ def main():
    logData = Logger()
    logData.dataLogger(timestamp, temperature, humidity)
 
-   logData.displayData
+   logData.displayData()
    
 if __name__ == "__main__":
         main()

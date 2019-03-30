@@ -2,10 +2,10 @@
 import sqlite3
 
 class Logger:
-    DB_NAME = "sensehat.db"
 
     def dataLogger(self, timestamp, temperature, humidity):
-        connection = sqlite3.connect("sensehat.db")
+        DB_NAME = "sensehat.db"
+        connection = sqlite3.connect(DB_NAME)
         with connection:
              connection.execute(
              """INSERT INTO sensehat_data (timestamp, temperature, humidity)
@@ -13,8 +13,9 @@ class Logger:
 
     
     
-    def displayData():
-        connection = sqlite3.connect("sensehat.db")
+    def displayData(self):
+        DB_NAME = "sensehat.db"
+        connection = sqlite3.connect(DB_NAME)
         connection.row_factory = sqlite3.Row 
         with connection:
             cursor = connection.cursor()
@@ -25,4 +26,4 @@ class Logger:
             print("Time  Temperature  Humidity")
             for row in cursor:
                 print(row["timestamp"], row["temperature"], row["humidity"], sep="   ")
-    displayData()
+

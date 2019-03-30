@@ -9,6 +9,7 @@ ONE_DAY_DELTA = timedelta(days = 1)
 def main():
     connection = sqlite3.connect(DB_NAME)
     connection.row_factory = sqlite3.Row
+    
     with connection:
         cursor = connection.cursor()
 

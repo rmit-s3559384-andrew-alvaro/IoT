@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime, timedelta
 
 DB_NAME = "sensehat.db"
-DATE_FORMAT = "%Y-%m-%d"
+DATE_FORMAT = "%d/%m/%Y %I:%M %p"
 ONE_DAY_DELTA = timedelta(days = 1)
 
 # Main function.

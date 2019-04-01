@@ -1,35 +1,20 @@
-import sqlite3
-from datetime import datetime, timedelta
+import json 
+from pushBullet import pushNotification
 
-DB_NAME = "sensehat.db"
-DATE_FORMAT = "%d/%m/%Y %I:%M %p"
-ONE_DAY_DELTA = timedelta(days = 1)
+class InRange:
 
-# Main function.
-def main():
-    connection = sqlite3.connect(DB_NAME)
-    connection.row_factory = sqlite3.Row
     
-    with connection:
-        cursor = connection.cursor()
+    def checkConfig(self, temperature, humidity):
+        sendPushBullet = pushNotification()
+        with open("config.json", "r") as file:
+            config = json.load(file)
 
-        row = cursor.execute("SELECT DATE(MIN(timestamp)), DATE(MAX(timestamp)) FROM sensehat_data").fetchone()
-        startDate = datetime.strptime(row[0], DATE_FORMAT)
-        endDate = datetime.strptime(row[1], DATE_FORMAT)
+        minTemp = config["min_temperature"]
+        maxTemp = config["max_temperature"]
+        minHumid = config["min_humidity"]
+        maxHumid = config["max_humidity"]
 
-        print("Dates:")
-        date = startDate
-        while date <= endDate:
-            row = cursor.execute(
-                """SELECT COUNT(*) FROM sensehat_data
-                WHERE timestamp >= DATE(:date) AND timestamp < DATE(:date, '+1 day')""",
-                { "date": date.strftime(DATE_FORMAT) }).fetchone()
-            
-            print(date.strftime(DATE_FORMAT) + " | Row Count: " + str(row[0]))
-            
-            date += ONE_DAY_DELTA
-    connection.close()
-
-# Execute program.
-if __name__ == "__main__":
-    main()
+        if(temperature < minTemp or temperature > maxTemp or humidity < minHumid or humidity > maxHumid):
+            sendPushBullet.send()
+        else:
+            print("Temperature and Humidity in range")

@@ -3,6 +3,7 @@ from virtual_sense_hat import VirtualSenseHat
 import datetime
 import time
 from logData import Logger
+from checkRange import InRange
 import sqlite3
 
 class Info:
@@ -17,24 +18,27 @@ class Info:
       humidity = sense.get_humidity()
       
       if temperature is not None:
-        temperature = round(temperature, 2)
+        temperature = round(temperature, 1)
         
       return timestamp, temperature, humidity
    
 
-info = Info()
+
 
 def main():
-      
+   info = Info()
+   logData = Logger()
+   check = InRange()
    timestamp, temperature, humidity = info.getInfo()
 
-   logData = Logger()
    
+
    for _ in range(0, 3):
       logData.dataLogger(timestamp, temperature, humidity)
       time.sleep(info.SAMPLE_FREQUENCY_SECONDS)
 
    logData.displayData()
+   check.checkConfig(temperature, humidity)
    
 if __name__ == "__main__":
         main()

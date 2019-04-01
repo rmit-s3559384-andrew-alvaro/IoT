@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import json 
 from pushBullet import pushNotification
 
@@ -15,6 +16,6 @@ class InRange:
         maxHumid = config["max_humidity"]
 
         if(temperature < minTemp or temperature > maxTemp or humidity < minHumid or humidity > maxHumid):
-            sendPushBullet.send()
+                sendPushBullet.send()
         else:
             print("Temperature and Humidity in range")

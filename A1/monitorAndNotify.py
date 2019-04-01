@@ -18,7 +18,10 @@ class Info:
       humidity = sense.get_humidity()
       
       if temperature is not None:
-        temperature = round(temperature, 1)
+        temperature = round(temperature, 2)
+        
+      if humidity is not None:
+        humidity = round(humidity, 2)
         
       return timestamp, temperature, humidity
    
@@ -39,6 +42,6 @@ def main():
 
    logData.displayData()
    check.checkConfig(temperature, humidity)
-   
+
 if __name__ == "__main__":
         main()

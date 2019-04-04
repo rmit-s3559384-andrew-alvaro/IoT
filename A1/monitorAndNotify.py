@@ -22,7 +22,7 @@ class Info:
         
       if humidity is not None:
         humidity = round(humidity, 2)
-        
+      
       return timestamp, temperature, humidity
    
 

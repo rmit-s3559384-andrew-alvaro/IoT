@@ -36,11 +36,14 @@ class Report:
             while date <= endDate:
                 row = cursor.execute(
                     """SELECT MIN(temperature), MAX(temperature), MIN(humidity), MAX(humidity) FROM sensehat_data
-                    WHERE """,
-                    { "minTemp": minTemp, "maxTemp": maxTemp, "minHumid": minHumid, "maxHumid": maxHumid }).fetchone()
+                    WHERE timestamp >= DATE(:date) AND timestamp < DATE(:date, '+1 day')""",
+                    { "date": date.strftime(DATE_FORMAT) }).fetchone()
+                    
 
                 minTemp = row[0]
                 maxTemp = row[1]
+                minHumid = row[2]
+                maxHumid = row[3]  
 
                 if(mintemp is None)
 

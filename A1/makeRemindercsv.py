@@ -6,7 +6,7 @@ class Reminder:
         exists = os.path.isfile('reminder.csv')
         
         if exists:
-            print()
+            pass
 
         else:
             with open('reminder.csv', 'w') as csvfile:

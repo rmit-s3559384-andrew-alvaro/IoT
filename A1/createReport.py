@@ -7,13 +7,15 @@ from datetime import datetime, timedelta
 class Report:
     
     def report(self):
-        DB_NAME = "sensehat.db"
         DATE_FORMAT = "%d/%m/%Y %I:%M %p"
-        ONE_DAY_DELTA = timedelta(days = 1)
         
         with open("config.json", "r") as file:
             config = json.load(file)
 
+        minTempConfig = config["min_temperature"]
+        maxTempConfig = config["max_temperature"]
+        minHumidConfig = config["min_humidity"]
+        maxHumidConfig = config["max_humidity"]   
        
             
         connection = sqlite3.connect("sensehat.db")
@@ -26,30 +28,41 @@ class Report:
             startDate = datetime.strptime(row[0], DATE_FORMAT)
             endDate = datetime.strptime(row[1], DATE_FORMAT)
 
-            print("Dates:")
             date = startDate
-            minTempConfig = config["min_temperature"]
-            maxTempConfig = config["max_temperature"]
-            minHumidConfig = config["min_humidity"]
-            maxHumidConfig = config["max_humidity"]   
+            print(startDate)
+            print(endDate)
             
-            while date <= endDate:
+            
+            while endDate <= date:
                 row = cursor.execute(
-                    """SELECT MIN(temperature), MAX(temperature), MIN(humidity), MAX(humidity) FROM sensehat_data
-                    WHERE timestamp >= DATE(:date) AND timestamp < DATE(:date, '+1 day')""",
+                    """SELECT min(temperature), max(temperature), min(humidity), max(humidity) FROM sensehat_data
+                    WHERE timestamp >= :date AND timestamp < :date""",
                     { "date": date.strftime(DATE_FORMAT) }).fetchone()
-                    
 
                 minTemp = row[0]
                 maxTemp = row[1]
                 minHumid = row[2]
-                maxHumid = row[3]  
-
-                if(mintemp is None)
-
-            print(date.strftime(DATE_FORMAT) + " | Row Count: " + str(row[0]))
-            
-            date += ONE_DAY_DELTA
+                maxHumid = row[3]
+                
+                while minTemp <= maxTemp:
+                    while minHumid <= maxHumid:
+                        if(minTemp < minTempConfig):
+                            status = "BAD, Below configured temperature"
+                        if(maxTemp > maxTempConfig):
+                            status = "BAD, Above configured temperature"
+                        if(minHumid < minHumidConfig):
+                            status = "BAD, Below configured humidity"
+                        if(maxHumid > maxHumidConfig):
+                            status = "BAD, Above configured humidity"
+                        else:
+                            status = "OK"
+                
+                print(status)
+                with open('report.csv', 'w') as csvfile:
+                    writer = csv.writer(csvfile)
+                    writer.writerow(["Date", "Status"])
+                    writer.writerow([date.strftime(DATE_FORMAT), status])
+                
         connection.close()
 
 run = Report()

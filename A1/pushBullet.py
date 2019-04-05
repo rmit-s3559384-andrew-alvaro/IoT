@@ -29,7 +29,7 @@ class pushNotification:
         if(response.status_code == 200):
             with open('reminder.csv', 'w') as csvfile:
                 writer = csv.writer(csvfile)
-                writer.writerow([timestamp])
+                writer.writerow([timestamp, "Notification last sent. Do not tamper or delete this file"])
 
         print("Notification sent.")
 

@@ -4,6 +4,7 @@ import datetime
 import time
 from logData import Logger
 from checkRange import InRange
+from makeRemindercsv import Reminder
 import sqlite3
 
 class Info:
@@ -32,6 +33,7 @@ def main():
    info = Info()
    logData = Logger()
    check = InRange()
+   reminder = Reminder()
    timestamp, temperature, humidity = info.getInfo()
 
    
@@ -41,6 +43,8 @@ def main():
       time.sleep(info.SAMPLE_FREQUENCY_SECONDS)
 
    logData.displayData()
+
+   reminder.makeReminder()
    check.checkConfig(temperature, humidity)
 
 if __name__ == "__main__":

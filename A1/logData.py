@@ -23,7 +23,7 @@ class Logger:
         
             print("Database content:")
             print("-----------------")
-            print("Time  Temperature  Humidity")
+            print("Time              Temperature Humidity")
             for row in cursor:
                 print(row["timestamp"], row["temperature"], row["humidity"], sep="   ")
 

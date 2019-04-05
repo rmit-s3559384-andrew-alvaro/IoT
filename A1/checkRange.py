@@ -6,7 +6,6 @@ from pushBullet import pushNotification
 
 class InRange:
 
-    
     def checkConfig(self, temperature, humidity):
         sendPushBullet = pushNotification()
         timestamp = datetime.datetime.now().strftime('%d/%m/%Y')
@@ -18,7 +17,7 @@ class InRange:
         maxTemp = config["max_temperature"]
         minHumid = config["min_humidity"]
         maxHumid = config["max_humidity"]
-
+        
         if(temperature < minTemp or temperature > maxTemp or humidity < minHumid or humidity > maxHumid):
             
             with open('reminder.csv', 'r') as csvfile:
@@ -28,6 +27,6 @@ class InRange:
                     if row[0] != timestamp:
                         sendPushBullet.send()
                     else:
-                        print("Notification has been sent today.")
+                        print("Notification has already been sent today.")
         else:
             print("Temperature and Humidity in range")

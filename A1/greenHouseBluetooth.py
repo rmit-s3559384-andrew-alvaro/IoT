@@ -23,7 +23,7 @@ class blueDev:
 
         else:
             print("No device available")
-
+        print()
         paired = sp.Popen(["bt-device", "--list"], stdin = sp.PIPE, stdout = sp.PIPE, close_fds = True)
 
         (stdout, stdin) = (paired.stdout, paired.stdin)

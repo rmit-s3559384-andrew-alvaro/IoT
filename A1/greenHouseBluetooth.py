@@ -1,13 +1,15 @@
-import bluetooth
+import bluetooth 
+import sys, os
 import subprocess as sp
+import datetime
 from pushBulletForBluetooth import pushNotification
 from makeRemindercsv import Reminder
+import csv
 
 class blueDev:
-	
+    
+    def findmyDevice(self): 
 
-	def findmyDevice(self):
-        
         sendPushBullet = pushNotification()
         timestamp = datetime.datetime.now().strftime('%d/%m/%Y')
         nearby_devices = bluetooth.discover_devices(lookup_names = True)

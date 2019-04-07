@@ -3,7 +3,7 @@ import os
 class Reminder:
 
     def makeReminder(self): 
-        exists = os.path.isfile('reminder.csv')
+        exists = os.path.isfile('bluetoothReminder.csv')
         
         if exists:
             pass

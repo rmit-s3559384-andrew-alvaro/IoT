@@ -3,7 +3,7 @@ import sys, os
 import subprocess as sp
 import datetime
 from pushBulletForBluetooth import pushNotification
-from makeRemindercsv import Reminder
+from makeReminderforBluetooth import Reminder
 import csv
 
 class blueDev:
@@ -18,7 +18,7 @@ class blueDev:
             
             for addr, name in nearby_devices:
                 
-                devices = (addr.split("(")[-1])
+                devices = addr.split("(")[-1]
             
         else:
             print("No device available")
@@ -49,9 +49,13 @@ class blueDev:
         else:
             print("No match device(s) found!")
 
-bluetooth = blueDev()
+
 
 def main():
+    bluetooth = blueDev()
+    reminder = Reminder()
+
+    reminder.makeReminder()
     bluetooth.findmyDevice()
 
 if __name__ == "__main__":

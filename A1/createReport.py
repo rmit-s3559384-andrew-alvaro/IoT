@@ -43,7 +43,17 @@ class Report:
                 maxTemp = row[1]
                 minHumid = row[2]
                 maxHumid = row[3]
+
+            if minTemp is None:
+                pass
+            if maxTemp is None:
+                pass
+            if minHumid is None:
+                pass
+            if maxHumid is None:
+                pass
                 
+            else:   
                 while minTemp <= maxTemp:
                     while minHumid <= maxHumid:
                         if(minTemp < minTempConfig):
@@ -56,13 +66,13 @@ class Report:
                             status = "BAD, Above configured humidity"
                         else:
                             status = "OK"
-                
-                print(status)
-                with open('report.csv', 'w') as csvfile:
-                    writer = csv.writer(csvfile)
-                    writer.writerow(["Date", "Status"])
-                    writer.writerow([date.strftime(DATE_FORMAT), status])
-                
+            
+                        print(status)
+                        with open('report.csv', 'w') as csvfile:
+                            writer = csv.writer(csvfile)
+                            writer.writerow(["Date", "Status"])
+                            writer.writerow([date.strftime(DATE_FORMAT), status])
+
         connection.close()
 
 run = Report()

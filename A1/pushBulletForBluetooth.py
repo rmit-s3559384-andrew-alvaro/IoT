@@ -27,7 +27,7 @@ class pushNotification:
             raise Exception()
         
         if(response.status_code == 200):
-            with open('reminder.csv', 'w') as csvfile:
+            with open('bluetoothReminder.csv', 'w') as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow([timestamp, "Notification last sent. Do not tamper or delete this file"])
 
@@ -36,6 +36,7 @@ class pushNotification:
 
     def send(self):
         push = pushNotification()
+
 
         ip_address = os.popen("hostname -I").read()
         push.send_notification_via_pushbullet(ip_address, "From Raspberry Pi")

@@ -35,7 +35,7 @@ class blueDev:
             pairedString = paired_device.decode()
             pairedSplit = pairedString.split("(")[-1]
             pairedDevice = pairedSplit[0:-2]
-
+            
             if pairedDevice == devices:
                     
                 with open('bluetoothReminder.csv', 'r') as csvfile:
@@ -47,6 +47,7 @@ class blueDev:
                         else:
                             print("Notification has already been sent today.")
             else:
+                print(pairedDevice, devices)
                 print("No match device(s) found!")
 
 

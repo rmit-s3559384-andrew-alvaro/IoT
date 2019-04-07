@@ -37,7 +37,7 @@ class blueDev:
             pairedSplit = pairedString.split("(")[-1]
             pairedDevice = pairedSplit[0:-2]
         
-        for addr, name in nearby_devices:
+        for devices, name in nearby_devices:
 
             if pairedDevice == devices:
                     

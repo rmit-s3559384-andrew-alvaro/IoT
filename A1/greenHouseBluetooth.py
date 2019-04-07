@@ -21,6 +21,7 @@ class blueDev:
                 devices = (addr.split("(")[-1])
                 print("Scanned deviced:")
                 print(devices)
+                print()
 
         else:
             print("No device available")
@@ -41,13 +42,13 @@ class blueDev:
             for devices, name in nearby_devices:
 
                 if pairedDevice == devices:
-                        
+                    print(devices, pairedDevice)
                     with open('bluetoothReminder.csv', 'r') as csvfile:
                         readCSV = csv.reader(csvfile)
                         
                         for row in readCSV:
                             if row[0] != timestamp:
-                                print(devices, pairedDevice)
+                                
                                 print("Device matched!")
                                 sendPushBullet.send()
                             else:

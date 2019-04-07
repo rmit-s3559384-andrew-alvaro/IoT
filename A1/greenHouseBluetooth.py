@@ -46,8 +46,8 @@ class blueDev:
                             sendPushBullet.send()
                         else:
                             print("Notification has already been sent today.")
-        else:
-            print("No match device(s) found!")
+            else:
+                print("No match device(s) found!")
 
 
 

@@ -35,7 +35,8 @@ class blueDev:
             pairedString = paired_device.decode()
             pairedSplit = pairedString.split("(")[-1]
             pairedDevice = pairedSplit[0:-2]
-            
+        
+        for pairedDevice in devices:
             if pairedDevice == devices:
                     
                 with open('bluetoothReminder.csv', 'r') as csvfile:

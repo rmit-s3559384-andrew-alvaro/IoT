@@ -20,7 +20,6 @@ class blueDev:
                 
                 devices = (addr.split("(")[-1])
                 print(devices)
-                print()
 
         else:
             print("No device available")

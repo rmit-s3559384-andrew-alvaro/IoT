@@ -15,11 +15,10 @@ class blueDev:
         nearby_devices = bluetooth.discover_devices(lookup_names = True)
 
         if nearby_devices is not None:
-            
+            print("Scanned device:")
             for addr, name in nearby_devices:
                 
                 devices = (addr.split("(")[-1])
-                print("Scanned deviced:")
                 print(devices)
                 print()
 

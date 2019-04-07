@@ -19,6 +19,7 @@ class blueDev:
             for addr, name in nearby_devices:
                 
                 devices = (addr.split("(")[-1])
+                print(devices)
 
         else:
             print("No device available")

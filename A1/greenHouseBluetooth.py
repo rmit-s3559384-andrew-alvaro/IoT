@@ -37,20 +37,21 @@ class blueDev:
             pairedSplit = pairedString.split("(")[-1]
             pairedDevice = pairedSplit[0:-2]
         
+        for addr, name in nearby_devices:
 
-        if pairedDevice == devices:
-                
-            with open('bluetoothReminder.csv', 'r') as csvfile:
-                readCSV = csv.reader(csvfile)
-                
-                for row in readCSV:
-                    if row[0] != timestamp:
-                        sendPushBullet.send()
-                    else:
-                        print("Notification has already been sent today.")
-        else:
-            print(pairedDevice, devices)
-            print("No match device(s) found!")
+            if pairedDevice == devices:
+                    
+                with open('bluetoothReminder.csv', 'r') as csvfile:
+                    readCSV = csv.reader(csvfile)
+                    
+                    for row in readCSV:
+                        if row[0] != timestamp:
+                            sendPushBullet.send()
+                        else:
+                            print("Notification has already been sent today.")
+            else:
+                print(pairedDevice, devices)
+                print("No match device(s) found!")
 
 
 

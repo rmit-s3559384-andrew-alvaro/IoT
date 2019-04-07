@@ -52,7 +52,7 @@ class blueDev:
                             else:
                                 print("Device matched! Notification has already been sent today.")
                 else:
-                    print(devices, "=", pairedDevice)
+                    print(devices, "!=", pairedDevice)
                     print("Device not matched...")
 
 

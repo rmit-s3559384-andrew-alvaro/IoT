@@ -30,7 +30,7 @@ class blueDev:
         list_of_paired_devices = stdout.readlines()
 
         list_of_paired_devices.pop(0)
-
+        print("Matching devices...")
         for paired_device in list_of_paired_devices:
             
             pairedString = paired_device.decode()
@@ -38,7 +38,7 @@ class blueDev:
             pairedDevice = pairedSplit[0:-2]
         
             for devices, name in nearby_devices:
-
+                
                 if pairedDevice == devices:
                     print(devices, "=", pairedDevice)
                     with open('bluetoothReminder.csv', 'r') as csvfile:

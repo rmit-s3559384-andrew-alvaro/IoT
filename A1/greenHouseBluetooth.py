@@ -40,7 +40,7 @@ class blueDev:
             for devices, name in nearby_devices:
 
                 if pairedDevice == devices:
-                    print(devices, pairedDevice)
+                    print(devices, "=", pairedDevice)
                     with open('bluetoothReminder.csv', 'r') as csvfile:
                         readCSV = csv.reader(csvfile)
                         

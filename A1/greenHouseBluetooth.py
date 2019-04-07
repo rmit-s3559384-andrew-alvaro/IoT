@@ -56,7 +56,7 @@ def main():
     reminder = Reminder()
 
     reminder.makeReminder()
-    for range
+
     bluetooth.findmyDevice()
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ class blueDev:
 
         if nearby_devices is not None:
             
-            for addr in nearby_devices:
+            for addr, name in nearby_devices:
                 
                 devices = addr.split("(")[-1]
             

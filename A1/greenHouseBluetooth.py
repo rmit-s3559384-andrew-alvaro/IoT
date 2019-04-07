@@ -19,6 +19,7 @@ class blueDev:
             for addr, name in nearby_devices:
                 
                 devices = (addr.split("(")[-1])
+                print("Scanned deviced:")
                 print(devices)
 
         else:
@@ -46,12 +47,13 @@ class blueDev:
                         
                         for row in readCSV:
                             if row[0] != timestamp:
+                                print(devices, pairedDevice)
                                 print("Device matched!")
                                 sendPushBullet.send()
                             else:
                                 print("Device matched! Notification has already been sent today.")
                 else:
-                    print(pairedDevice, devices)
+                    print(devices, pairedDevice)
                     print("Device not matched...")
 
 

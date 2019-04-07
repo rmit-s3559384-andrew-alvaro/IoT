@@ -46,9 +46,10 @@ class blueDev:
                     
                     for row in readCSV:
                         if row[0] != timestamp:
+                            print("Device matched!")
                             sendPushBullet.send()
                         else:
-                            print("Notification has already been sent today.")
+                            print("Device matched! Notification has already been sent today.")
             else:
                 print(pairedDevice, devices)
                 print("Device not matched...")

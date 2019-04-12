@@ -34,7 +34,7 @@ class Report:
             print(endDate)
             
             
-            while date <= endDate:
+            while endDate <= date:
                 row = cursor.execute(
                     """SELECT min(temperature), max(temperature), min(humidity), max(humidity) FROM sensehat_data
                     WHERE timestamp >= :date AND timestamp < :date""",
@@ -45,34 +45,34 @@ class Report:
                 minHumid = row[2]
                 maxHumid = row[3]
 
-                if minTemp is None:
-                    pass
-                if maxTemp is None:
-                    pass
-                if minHumid is None:
-                    pass
-                if maxHumid is None:
-                    pass
-                    
-                else:   
-                    while minTemp <= maxTemp:
-                        while minHumid <= maxHumid:
-                            if(minTemp < minTempConfig):
-                                status = "BAD, Below configured temperature"
-                            if(maxTemp > maxTempConfig):
-                                status = "BAD, Above configured temperature"
-                            if(minHumid < minHumidConfig):
-                                status = "BAD, Below configured humidity"
-                            if(maxHumid > maxHumidConfig):
-                                status = "BAD, Above configured humidity"
-                            else:
-                                status = "OK"
+            if minTemp is None:
+                pass
+            if maxTemp is None:
+                pass
+            if minHumid is None:
+                pass
+            if maxHumid is None:
+                pass
                 
-                            print(status)
-                            with open('report.csv', 'w') as csvfile:
-                                writer = csv.writer(csvfile)
-                                writer.writerow(["Date", "Status"])
-                                writer.writerow([date.strftime(DATE_FORMAT), status])
+            else:   
+                while minTemp <= maxTemp:
+                    while minHumid <= maxHumid:
+                        if(minTemp < minTempConfig):
+                            status = "BAD, Below configured temperature"
+                        if(maxTemp > maxTempConfig):
+                            status = "BAD, Above configured temperature"
+                        if(minHumid < minHumidConfig):
+                            status = "BAD, Below configured humidity"
+                        if(maxHumid > maxHumidConfig):
+                            status = "BAD, Above configured humidity"
+                        else:
+                            status = "OK"
+            
+                        print(status)
+                        with open('report.csv', 'w') as csvfile:
+                            writer = csv.writer(csvfile)
+                            writer.writerow(["Date", "Status"])
+                            writer.writerow([date.strftime(DATE_FORMAT), status])
 
         connection.close()
 

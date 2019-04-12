@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from virtual_sense_hat import VirtualSenseHat
+from sense_hat import SenseHat
 import datetime
 import time
 from logData import Logger
@@ -13,7 +13,7 @@ class Info:
 
    def getInfo(self):
       
-      sense = VirtualSenseHat.getSenseHat()
+      sense = SenseHat.getSenseHat()
       timestamp = datetime.datetime.now().strftime('%d/%m/%Y %I:%M %p')
       temperature = sense.get_temperature()
       humidity = sense.get_humidity()
